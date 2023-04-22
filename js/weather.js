@@ -3,7 +3,7 @@ const urlBase = 'http://dataservice.accuweather.com/'
 
 const getCityUrl = cityName => `${urlBase}locations/v1/cities/search?apikey=${apiKey}&q=${cityName}`
 
-const getWeatherUrl = ({ Key }) => `${urlBase}currentconditions/v1/${Key}?apikey=${apiKey}&language=pt-BR`
+const getWeatherUrl = cityKey => `${urlBase}currentconditions/v1/${cityKey}?apikey=${apiKey}&language=pt-BR`
 
 const fetchData = async url => {
     try {
@@ -18,9 +18,4 @@ const fetchData = async url => {
 }
 const getCityData = cityName => fetchData( getCityUrl(cityName) )
 
-const getCityWeather = async cityName => {
-    const [ cityData ] = await getCityData(cityName)
-    const cityWeatherUrl = getWeatherUrl(cityData)
-
-    return fetchData(getWeatherUrl(cityData))
-} 
+const getCityWeather = cityKey => fetchData(getWeatherUrl(cityKey))
