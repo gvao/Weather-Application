@@ -13,15 +13,11 @@ const showCityCard = () => {
     cityCard.classList.remove('d-none')
 }
 
-const insertTimeIcon = ({ WeatherIcon, WeatherText }) => {
-    const timeIcon = `<img src="src/icons/${WeatherIcon}.svg" alt="${WeatherText}" />`
-    timeIconContainer.innerHTML = timeIcon
-}
-
 const insertIcons = ({ WeatherIcon, WeatherText, IsDayTime }) => {
     timeImg.src = `src/${IsDayTime ? 'day' : 'night'}.svg`
-    
-    insertTimeIcon({ WeatherIcon, WeatherText })
+
+    const timeIcon = `<img src="src/icons/${WeatherIcon}.svg" alt="${WeatherText}" />`
+    timeIconContainer.innerHTML = timeIcon
 }
 
 const updateContents = ( LocalizedName, WeatherText, Temperature ) => {
@@ -32,15 +28,16 @@ const updateContents = ( LocalizedName, WeatherText, Temperature ) => {
 
 const showCityWeatherInfo = async inputValue => {
     const [{ Key, LocalizedName }] = await getCityData(inputValue)
-    const [{ WeatherText, Temperature, IsDayTime, WeatherIcon }] = await getCityWeather(Key)
-
+    // const [ weatherData ] = await getCityWeather(Key)
+    const [{ WeatherText, WeatherIcon, Temperature, IsDayTime }] = await getCityWeather(Key)
+    
     insertIcons({ WeatherIcon, WeatherText, IsDayTime })
     updateContents(LocalizedName, WeatherText, Temperature.Metric.Value)
 }
 
 const handlerSubmit = event => {
-    const { target } = event
     event.preventDefault()
+    const { target } = event
 
     const inputValue = target.city.value
     

@@ -1,9 +1,11 @@
-const apiKey = 'VtC3Y3cqRsVUBdACrBQQFb5NIWgz5H7m'
+const apiKey = 'ecty8AvHgalDkfNaqxIKzoyQKNqYL1Zx'
 const urlBase = 'https://dataservice.accuweather.com/'
 
-const getCityUrl = cityName => `${urlBase}locations/v1/cities/search?apikey=${apiKey}&q="${cityName}"`
+const log = locale => (...args) => console.log(`[${locale}]: `, ...args)
 
-const getWeatherUrl = cityKey => `${urlBase}currentconditions/v1/${cityKey}?apikey="${apiKey}"&language=pt-BR`
+const getCityUrl = cityName => `${urlBase}locations/v1/cities/search?apikey=${apiKey}&q=${cityName}`
+
+const getWeatherUrl = cityKey => `${urlBase}currentconditions/v1/${cityKey}?apikey=${apiKey}&language=pt-BR`
 
 const fetchData = async url => {
     try {
@@ -16,6 +18,7 @@ const fetchData = async url => {
         alert(`${name}: ${message}`)
     }
 }
-const getCityData = cityName => fetchData( getCityUrl(cityName) )
+
+const getCityData = cityName => fetchData(getCityUrl(cityName))
 
 const getCityWeather = cityKey => fetchData(getWeatherUrl(cityKey))
