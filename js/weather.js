@@ -9,7 +9,7 @@ const getCityData = async cityName => {
 
         if (!response.ok) throw new Error('Não foi possível obter os dados')
 
-        const [ cityData ] = await response.json()[0]
+        const [ cityData ] = await response.json()
         
         return cityData
     } catch ({ name, message }) {
