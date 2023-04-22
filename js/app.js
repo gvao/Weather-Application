@@ -30,18 +30,23 @@ const updateContents = ( LocalizedName, WeatherText, Temperature ) => {
     cityTemperatureContainer.textContent = Temperature
 }
 
-cityForm.addEventListener('submit', async event => {
+const showCityWeatherInfo = async inputValue => {
+    const [{ Key, LocalizedName }] = await getCityData(inputValue)
+    const [{ WeatherText, Temperature, IsDayTime, WeatherIcon }] = await getCityWeather(Key)
+
+    insertIcons({ WeatherIcon, WeatherText, IsDayTime })
+    updateContents(LocalizedName, WeatherText, Temperature.Metric.Value)
+}
+
+const handlerSubmit = event => {
     const { target } = event
     event.preventDefault()
 
     const inputValue = target.city.value
-
-    const [{ Key, LocalizedName }] = await getCityData(inputValue)
-    const [{ WeatherText, Temperature, IsDayTime, WeatherIcon }] = await getCityWeather(Key)
-
+    
     showCityCard()
-    insertIcons({ WeatherIcon, WeatherText, IsDayTime })
-    updateContents(LocalizedName, WeatherText, Temperature.Metric.Value)
-
+    showCityWeatherInfo(inputValue)
     target.reset()
-})
+}
+
+cityForm.addEventListener('submit', handlerSubmit)
