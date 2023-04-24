@@ -1,0 +1,19 @@
+@import url("./reset.css");
+
+:root {    
+    /* colors */
+    --color-black: #222;
+    --color-white: #999;
+}
+
+
+body {
+    height: 100%;
+
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    
+}
