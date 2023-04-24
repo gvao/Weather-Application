@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/css/index.css" rel="stylesheet" >
+    <link href="/css/index.css" rel="stylesheet">
 
     <title>Weather app</title>
 </head>
+
 <body>
 
     <main class="app">
         <header>
             <div class="infos">
-                <h1 class="title" >Weather app</h1>
+                <h1 class="title">Weather app</h1>
                 <p>Saiba a condição climatica de qualquer cidade</p>
             </div>
-            
+
             <div class="clouds"></div>
         </header>
 
-        <form class="search-form" >
+        <form class="search-form">
             <label for="citysearch">city search</label>
             <input class="input" autofocus type="text" name="citysearch" id="citysearch" placeholder="Ex.: Paris">
         </form>
+
+        <section class="card">
+            <img src="https://via.placeholder.com/400x300" alt="">
+            
+            
+            <div class="details">
+                <i class="time-icon"></i>
+
+                <h4 class="city-name" >Nome da Cidade</h5>
+
+                <div data-js="city-weather" >Clima</div>
+
+                <div data-js="city-temperature">
+                    <span>00</span>
+                    <span>&deg;C</span>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
-    
 </body>
+
 </html>
