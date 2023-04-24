@@ -4,7 +4,6 @@
 @import url("./components/input.css");
 @import url("./components/search-form.css");
 
-
 :root {    
     /* colors */
     --color-black: #222;
@@ -28,10 +27,9 @@
 body {
     height: 100%;
 
-    background-color: var(--color-white);
+    background-color: var(--color-darkness-blue);
     color: var(--color-black);
 
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
-
 }

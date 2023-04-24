@@ -3,20 +3,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: .4rem;
+    gap: .8rem;
 }
 
 .search-form [for = "citysearch"] {
-    background-color: var(--color-white);
-    color: var(--color-black);
+    background-color: var(--color-darkness-blue);
+    color: var(--color-white);
+
+    text-transform: capitalize;
+    font-weight: 400;
     
     padding: var(--pad-min) var(--pad-med);
     border-radius: var(--radius-default);
     margin-bottom: -.8rem;
     
     z-index: 1;
-}
 
-.search-form #citysearch {
-    
+    margin-bottom: -1.6rem;
+    margin-left: .6rem;
 }
