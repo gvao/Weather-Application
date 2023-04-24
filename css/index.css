@@ -1,6 +1,9 @@
 @import url("./reset.css");
 @import url("./components/app.css");
 @import url("./components/header.css");
+@import url("./components/input.css");
+@import url("./components/search-form.css");
+
 
 :root {    
     /* colors */
@@ -8,11 +11,16 @@
     --color-white: #999;
 
     /* padding */
-    --pad-default: 16px;
+    --pad-default: 1.6rem;
     --pad-med: calc( var(--pad-default) / 2 ) ;
+    --pad-min: calc( var(--pad-med) / 2 );
 
     /* radius */
-    --radius-default: 4px;
+    --radius-default: .4rem;
+
+    /* box-shadow */
+    --box-shadow-default: 
+        .4rem .4rem .2rem rgba( 0, 0, 0, .3 );
 }
 
 

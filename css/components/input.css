@@ -1,0 +1,11 @@
+.input {
+    outline: none;
+    box-shadow: var(--box-shadow-default);
+    padding: var(--pad-med) var(--pad-default);
+
+    border: none;
+    border-radius: var(--radius-default);
+
+    font-size: 2rem;
+    letter-spacing: -.1rem;
+}
