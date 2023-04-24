@@ -9,6 +9,7 @@
     /* colors */
     --color-black: #222;
     --color-white: #999;
+    --color-darkness-blue: rgb(17, 40, 93);
 
     /* padding */
     --pad-default: 1.6rem;

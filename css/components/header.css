@@ -1,55 +1,8 @@
+@import url("../components/clouds.css");
+
 header {
     position: relative;
     display: flex;
     justify-content: space-between;
     gap: var(--pad-med);
-}
-
-.clouds, .clouds:after, .clouds:before {
-    content: "";
-
-    background-color: var(--color-white);
-    
-    width: 10.0rem;
-    height: 10.0rem;
-    filter: blur(1..2rem);
-    box-shadow: 
-    -.2rem -.6rem 0 rgba(82, 120, 169, 0.05),
-    -.4rem -.1rem 0 rgba(34, 59, 73, 0.1);
-    
-    border-radius: 50%;
-
-    position: relative;
-    top: 2.0rem;
-    right: -5.0rem;
-    
-    transform: scale(1.3);
-    
-    animation: cloud_float 10s infinite ease;
-}
-
-@keyframes cloud_float {
-    0%, 100% {
-        transform: translate(-15%, -10%);
-        transform: scale(1.2);
-    }
-    
-    50% {
-        transform: translate(0%, 0%);
-        transform: scale(1);
-    }
-}
-
-.clouds:after {
-    content: "";
-    position: absolute;
-    top: 5.0rem;
-    right: 5.0rem;
-}
-
-.clouds:before {
-    content: "";
-    position: absolute;
-    top: 6.0rem;
-    right: 12.0rem;
 }
