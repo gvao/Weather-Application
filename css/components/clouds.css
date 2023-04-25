@@ -38,7 +38,7 @@
     opacity: .6;
     filter: blur(.5rem);
 
-    animation: cloud_float 20s infinite ease;
+    animation: cloud_float 10s infinite ease-in-out;
 }
 
 
