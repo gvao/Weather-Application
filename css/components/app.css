@@ -2,13 +2,12 @@
     width: 90%;
     max-width: 60.0rem;
 
-    color: var(--color-white);
+    color: var(--colors-primary);
 
-    background-color: var(--color-darkness-blue);
     background-image: 
-    linear-gradient(52deg, var(--color-darkness-blue), rgba(255, 255, 255, 0.366));
+    linear-gradient(52deg, var(--colors-secondary) , var(--colors-tertiary));
     
-    padding: var(--pad-med) var(--pad-default);
+    padding: calc(var(--pad-default) * 3);
     margin: .8rem auto;
     
     border-radius: var(--radius-default);
@@ -18,5 +17,5 @@
 
     display: flex;
     flex-direction: column;
-    gap: var(--pad-default);
+    gap: calc( var(--pad-default) * 2 );
 }

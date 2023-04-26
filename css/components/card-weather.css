@@ -1,0 +1,41 @@
+.card-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: var(--pad-med); */
+}
+
+.card-weather img {
+    width: 100%;
+    border-radius: var(--radius-default);
+} 
+
+.card-weather .city-details {
+    /* border: 2px solid; */
+    background-color: var(--colors-tertiary);
+    color: var(--colors-primary);
+
+    padding: var(--pad-default);
+    margin-top: -8rem;
+
+    width: 100%;
+    border-radius: calc( var(--radius-default) * 4 );
+
+    text-align: center;
+}
+
+.city-details .city-name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.city-details .weather {
+    margin-top: .4rem;
+}
+
+.city-details .temperature {
+    font-size: 6rem;
+
+    letter-spacing: -0.6rem;
+}

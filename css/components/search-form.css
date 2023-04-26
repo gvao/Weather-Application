@@ -7,7 +7,7 @@
 }
 
 .search-form [for = "citysearch"] {
-    background-color: var(--color-darkness-blue);
+    background-color: var(--color-primary);
     color: var(--color-white);
 
     text-transform: capitalize;
