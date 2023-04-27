@@ -27,9 +27,9 @@ const getCityWeather = async (cityCod) => {
 
 function getUrlApi (apiKey) {
 
-    const getUrlSearchCity = query => `${urlBase}locations/v1/cities/search?apikey=${apiKey}&q=${query}`
+    const getUrlSearchCity = query => `${urlBase}locations/v1/cities/search?language=pt-BR&apikey=${apiKey}&q=${query}`
 
-    const getUrlWeather = cityCod => `${urlBase}currentconditions/v1/${cityCod}?apikey=${apiKey}`
+    const getUrlWeather = cityCod => `${urlBase}currentconditions/v1/${cityCod}?language=pt-BR&apikey=${apiKey}`
 
     return {
         getUrlSearchCity,
