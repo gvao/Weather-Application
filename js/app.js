@@ -27,13 +27,13 @@ const getRequestApi = async inputValue => {
     const {
         IsDayTime, Temperature, WeatherIcon, WeatherText
     } = await getCityWeather(Key)
-
+    
     return {
         IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature: Temperature.Metric.Value
     }
 }
 
-$formCitySearch.addEventListener('submit', event => {
+const handlerSubmit = event => {
     event.preventDefault()
     const { target } = event
     const inputValue = target.citysearch.value
@@ -42,4 +42,6 @@ $formCitySearch.addEventListener('submit', event => {
         .then(updateScreen)
         .catch(console.error)
         .finally(() => target.reset())
-})
+}
+
+$formCitySearch.addEventListener('submit', handlerSubmit)
