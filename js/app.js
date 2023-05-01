@@ -7,6 +7,10 @@ const $cityName = document.querySelector('[data-js="city-name"]')
 const $cityWeather = document.querySelector('[data-js="city-weather"]')
 const $cityTemperature = document.querySelector('[data-js="city-temperature"] > span')
 
+const lastCitySearch = localStorage.getItem('lastCity')
+
+
+
 const updateScreen = ({ IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature }) => {
 
     const cardClasses = $card.classList
@@ -27,10 +31,10 @@ const getRequestApi = async inputValue => {
     const {
         IsDayTime, Temperature, WeatherIcon, WeatherText
     } = await getCityWeather(Key)
-    
-    return {
+
+    updateScreen({
         IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature: Temperature.Metric.Value
-    }
+    })
 }
 
 const handlerSubmit = event => {
@@ -38,10 +42,17 @@ const handlerSubmit = event => {
     const { target } = event
     const inputValue = target.citysearch.value
 
+    localStorage.setItem('lastCity', inputValue)
+
     getRequestApi(inputValue)
-        .then(updateScreen)
-        .catch(console.error)
-        .finally(() => target.reset())
+
+    target.reset()
+}
+
+if (lastCitySearch) {
+    console.log('tem localStorage')
+    $formCitySearch.citysearch.value = lastCitySearch
+    getRequestApi(lastCitySearch)
 }
 
 $formCitySearch.addEventListener('submit', handlerSubmit)
