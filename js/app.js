@@ -7,10 +7,6 @@ const $cityName = document.querySelector('[data-js="city-name"]')
 const $cityWeather = document.querySelector('[data-js="city-weather"]')
 const $cityTemperature = document.querySelector('[data-js="city-temperature"] > span')
 
-const lastCitySearch = localStorage.getItem('lastCity')
-
-
-
 const updateScreen = ({ IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature }) => {
 
     const cardClasses = $card.classList
@@ -49,10 +45,15 @@ const handlerSubmit = event => {
     target.reset()
 }
 
-if (lastCitySearch) {
-    console.log('tem localStorage')
+const showLocalStorage = () => {
+    const lastCitySearch = localStorage.getItem('lastCity')
+
+    if (!lastCitySearch) return
+
     $formCitySearch.citysearch.value = lastCitySearch
     getRequestApi(lastCitySearch)
 }
 
 $formCitySearch.addEventListener('submit', handlerSubmit)
+
+showLocalStorage()
