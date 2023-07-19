@@ -1,4 +1,7 @@
-const $formCitySearch = document.querySelector('.search-form')
+import { Emitter } from "./emitter.js"
+import { WeatherApp } from "./weather.js"
+
+const form = document.querySelector('.search-form')
 
 const $card = document.querySelector('.card-weather')
 const $img = document.querySelector('[data-js="icon-weather"]')
@@ -8,9 +11,9 @@ const $cityWeather = document.querySelector('[data-js="city-weather"]')
 const $cityTemperature = document.querySelector('[data-js="city-temperature"] > span')
 
 const updateScreen = ({ IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature }) => {
-
     const cardClasses = $card.classList
-    cardClasses.contains('hidden') && cardClasses.remove('hidden')
+
+    cardClasses.remove('hidden')
 
     $img.src = `src/${IsDayTime ? 'day' : 'night'}.svg`
     $img.alt = WeatherText
@@ -22,38 +25,24 @@ const updateScreen = ({ IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temp
     $cityTemperature.textContent = Temperature
 }
 
-const getRequestApi = async inputValue => {
-    const { LocalizedName, Key } = await getCity(inputValue)
+const getRequestWeatherApi = async cityName => {
+    const { LocalizedName, Key } = await WeatherApp.getCity(cityName)
     const {
-        IsDayTime, Temperature, WeatherIcon, WeatherText
-    } = await getCityWeather(Key)
+        IsDayTime, Temperature, WeatherIcon, WeatherText,
+    } = await WeatherApp.getCityWeather(Key)
 
-    updateScreen({
+    Emitter.emit(`dataUpdate`, {
         IsDayTime, WeatherIcon, WeatherText, LocalizedName, Temperature: Temperature.Metric.Value
     })
 }
 
-const handlerSubmit = event => {
+function onSubmit(event) {
     event.preventDefault()
-    const { target } = event
-    const inputValue = target.citysearch.value
 
-    localStorage.setItem('lastCity', inputValue)
+    const input = form.citysearch
 
-    getRequestApi(inputValue)
-
-    target.reset()
+    getRequestWeatherApi(input.value)
 }
 
-const showLocalStorage = () => {
-    const lastCitySearch = localStorage.getItem('lastCity')
-
-    if (!lastCitySearch) return
-
-    $formCitySearch.citysearch.value = lastCitySearch
-    getRequestApi(lastCitySearch)
-}
-
-$formCitySearch.addEventListener('submit', handlerSubmit)
-
-showLocalStorage()
+Emitter.on("dataUpdate", updateScreen)
+form.addEventListener('submit', onSubmit)
