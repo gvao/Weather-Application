@@ -9,6 +9,10 @@ Bem-vindo ao Weather App, sua ferramenta confiável para obter informações cli
 
 O Weather App é uma aplicação simples, mas poderosa, que permite aos usuários obterem a condição climática atual de qualquer cidade ao redor do mundo. Desenvolvido por [Yuri Galvão](https://github.com/gvao), este projeto é uma demonstração do uso de tecnologias como HTML, CSS, e JavaScript.
 
+## Projeto Online
+
+Confira o Weather App em ação [aqui](https://gvao.github.io/weather-application/).
+
 ## Como Funciona
 
 1. Digite o nome da cidade na barra de pesquisa.
